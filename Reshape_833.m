@@ -73,22 +73,6 @@ for i=1:20
     load([outpath,'fall - 副本 (',num2str(i),')_1190k.mat']);
     samples{14}{i} = sum( gccData,1);
 end
-%% 跳步
-% outpath='.\833\cwqWalkOutSeg2\';
-% for i=1:10
-%     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-%     samples{15}{i} = sum( gccData,1);
-% end
-% outpath='.\833\cstWalkOutSeg2\';
-% for i=1:10
-%     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-%     samples{16}{i} = sum( gccData,1);
-% end
-% outpath='.\833\samWalkOutSeg2\';
-% for i=1:5
-%     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-%     samples{17}{i} = sum( gccData,1);
-% end
 %% slip
 outpath='.\833\hydOutSeg2\';
 for i=1:20
@@ -100,7 +84,58 @@ for i=1:20
     load([outpath,'slip - 副本 (',num2str(i),')_1190k.mat']);
     samples{16}{i} = sum( gccData,1);
 end
+%% 2018-07-17Out
+outpath='.\833\2018-07-17Out\chjOutSeg2\sit\';
+for i=1:10
+    load([outpath,'sit - 副本 (',num2str(i),')_1190k.mat']);
+    samples{17}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\chjOutSeg2\tabu\';
+for i=1:40
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{18}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\chjOutSeg2\walk\';
+for i=1:44
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{19}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\chjOutSeg2\yuandi\';
+for i=1:36
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{20}{i} = sum( gccData,1);
+end
 
+outpath='.\833\2018-07-17Out\hydOutSeg2\sit\';
+for i=1:10
+    load([outpath,'sit - 副本 (',num2str(i),')_1190k.mat']);
+    samples{21}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\hydOutSeg2\tabu\';
+for i=1:40
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{22}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\hydOutSeg2\walk\';
+for i=1:24
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{23}{i} = sum( gccData,1);
+end
+outpath='.\833\2018-07-17Out\hydOutSeg2\yuandi\';
+for i=1:40
+    load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
+    samples{24}{i} = sum( gccData,1);
+end
+
+outpath='.\833\2018-07-17Out\otherOutSeg2\';
+for i=1:20
+    load([outpath,'book - 副本 (',num2str(i),')_1190k.mat']);
+    samples{25}{i} = sum( gccData,1);
+end
+for i=1:19
+    load([outpath,'chair - 副本 (',num2str(i),')_1190k.mat']);
+    samples{26}{i} = sum( gccData,1);
+end
 
 save('test','samples');
 %% Train
