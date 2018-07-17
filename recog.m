@@ -1,21 +1,4 @@
-% 	[x1 x2] = vad(x);
-% 	m = mfcc(x);
-% 	m = m(x1-2:x2-2,:);
-% 	for j=1:10
-% 		pout(j) = viterbi(hmm{j}, m);
-% 	end
-% 	[d,n] = max(pout);
-%% 计算阈值
-load('rand.mat')
-result=[];
-for k=1:length(samples{1})
-    m=samples{1}{k};
-    m=mfcc(m);
-    pout = viterbi(hmm{1}, m);
-    result = [result; pout];
-end
-threshold = mean(result)*1.04;
-fprintf('Threshold:%.f\n',threshold);
+threshold = -4721;
 %% 计算精度
 load('test.mat')
 result=[];
@@ -30,7 +13,7 @@ for i=1:length(samples)
             fallnum = fallnum + 1;
         end
     end
-    fprintf('%d/%d(%.4f)\n',fallnum,length(samples{i}),fallnum/length(samples{i}));
+    fprintf('%d:  %d/%d(%.4f)\n',i,fallnum,length(samples{i}),fallnum/length(samples{i}));
 end
 %% plot
 begin = 0.5;
