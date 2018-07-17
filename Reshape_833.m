@@ -73,88 +73,75 @@ for i=1:20
     load([outpath,'fall - 副本 (',num2str(i),')_1190k.mat']);
     samples{14}{i} = sum( gccData,1);
 end
-%% slip
-outpath='.\833\hydOutSeg2\';
-for i=1:20
-    load([outpath,'slip - 副本 (',num2str(i),')_1190k.mat']);
-    samples{15}{i} = sum( gccData,1);
-end
-outpath='.\833\lshOutSeg2\';
-for i=1:20
-    load([outpath,'slip - 副本 (',num2str(i),')_1190k.mat']);
-    samples{16}{i} = sum( gccData,1);
-end
 %% 2018-07-17Out
 outpath='.\833\2018-07-17Out\chjOutSeg2\sit\';
 for i=1:10
     load([outpath,'sit - 副本 (',num2str(i),')_1190k.mat']);
-    samples{17}{i} = sum( gccData,1);
+    samples{15}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\chjOutSeg2\tabu\';
 for i=1:40
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{18}{i} = sum( gccData,1);
+    samples{16}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\chjOutSeg2\walk\';
 for i=1:44
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{19}{i} = sum( gccData,1);
+    samples{17}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\chjOutSeg2\yuandi\';
 for i=1:36
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{20}{i} = sum( gccData,1);
+    samples{18}{i} = sum( gccData,1);
 end
 
 outpath='.\833\2018-07-17Out\hydOutSeg2\sit\';
 for i=1:10
     load([outpath,'sit - 副本 (',num2str(i),')_1190k.mat']);
-    samples{21}{i} = sum( gccData,1);
+    samples{19}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\hydOutSeg2\tabu\';
 for i=1:40
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{22}{i} = sum( gccData,1);
+    samples{20}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\hydOutSeg2\walk\';
 for i=1:24
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{23}{i} = sum( gccData,1);
+    samples{21}{i} = sum( gccData,1);
 end
 outpath='.\833\2018-07-17Out\hydOutSeg2\yuandi\';
 for i=1:40
     load([outpath,'walk - 副本 (',num2str(i),')_1190k.mat']);
-    samples{24}{i} = sum( gccData,1);
+    samples{22}{i} = sum( gccData,1);
 end
 
 outpath='.\833\2018-07-17Out\otherOutSeg2\';
 for i=1:20
     load([outpath,'book - 副本 (',num2str(i),')_1190k.mat']);
-    samples{25}{i} = sum( gccData,1);
+    samples{23}{i} = sum( gccData,1);
 end
 for i=1:19
     load([outpath,'chair - 副本 (',num2str(i),')_1190k.mat']);
-    samples{26}{i} = sum( gccData,1);
+    samples{24}{i} = sum( gccData,1);
 end
 
 save('test','samples');
 %% Train
 samples = [];
-outpath='.\833\samOutSeg2\';
-for i=1:10
-    load([outpath,'fall - 副本 (',num2str(i),')_1190k.mat']);
-    samples{1}{i} = sum(gccData,1);
+trainPerson = 3;
+rIndex=randperm(10,trainPerson)
+pause;
+tmp = 0;
+load('name.mat');
+for i = 1:trainPerson
+    outpath=name{rIndex(i)}.n;
+    for j=1:name{rIndex(i)}.num
+        load([outpath,'fall - 副本 (',num2str(j),')_1190k.mat']);
+        samples{1}{j+tmp} = sum(gccData,1);
+    end
+    tmp=length(samples{1});
 end
-tmp=length(samples{1});
-outpath='.\833\chjOutSeg2\';
-for i=1:10
-    load([outpath,'fall - 副本 (',num2str(i),')_1190k.mat']);
-    samples{1}{i+tmp} = sum(gccData,1);
-end
-tmp=length(samples{1});
-outpath='.\833\lshOutSeg2\';
-for i=1:10
-    load([outpath,'slip - 副本 (',num2str(i),')_1190k.mat']);
-    samples{1}{i+tmp} = sum(gccData,1);
-end
+
 save('samples','samples');
+main();
