@@ -1,5 +1,5 @@
 % 导入训练样本 
-load('fallsamples.mat')
+load('samples.mat')
 
 for i=1:length(samples)
 	sample=[];
@@ -7,9 +7,8 @@ for i=1:length(samples)
 		sample(k).wave=samples{i}{k};
 		sample(k).data=[];
 	end
-	hmm{i}=train(sample,[3 3 3 3]); % 进行训练，每个数字都得训练一个对应的hmm模型--nick
+	hmm{i}=train(sample,[3 3 3 3 3 3 3]); % 进行训练，每个数字都得训练一个对应的hmm模型--nick
 end
-
 % GMM(guassian mixture model)
 % 混合高斯模型，顾名思义，就是用多个带有权重的高斯密度函数来描述数据的分布情况。
 % 理论上来说，高斯分量越多，极值点越多，
